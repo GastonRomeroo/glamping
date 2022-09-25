@@ -92,7 +92,7 @@ body.tienda-202{
     width: 100%;
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
-   /* background: #fff;*/
+
 }
 .navigation ul li:hover{
     background: #fff;
@@ -155,4 +155,93 @@ body.tienda-202{
     line-height: 60px;
     text-align: start;
     white-space: nowrap;
+}
+/* CARD */
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+}
+.conte_parent{
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  flex-wrap:wrap;
+  
+  
+}
+
+
+
+.conte{
+    height: 530px;
+    width: 300px;
+    margin: 30px 30px;
+    background-color: white;
+}
+.conte .card{
+    height: 200px;
+    width: 100%;
+    margin-bottom: 200px;
+}
+.card img{
+    margin: auto;
+    display: block;
+}
+.conte .cuchillo img{
+    height: 330px;
+    width: 300px;
+}
+.conte .cuchillo{
+     background-color: #111;
+}
+
+.informacion{
+    height: 80px;
+    width: 100%;
+}
+.informacion h1{
+    font-family: sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: -10px;
+}
+
+.informacion{
+    text-align: center;
+    font-family: sans-serif;
+    font-size: 0.9em;
+}
+
+.precio {
+    height:50px;
+    width: 85%;
+    margin: auto;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.precio{
+    background-color: white;
+}
+.box-precio{
+    width: 80px;
+    background-color: white;
+}
+ .precio1{
+    background-color: white;
+    color: red;
+    font-size: .8em;
+}
+.precio .precio2{
+    background-color: white;
+    font-size: 1.5em;
+}
+.shoping{
+    background-color: white;
+    font-size: 1.5em;
+    color: #555;
 }
