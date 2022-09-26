@@ -1,0 +1,80 @@
+/* CARD */
+body.tienda-202{
+    background-image: url(../../IMG/IMG_TIENDA/jonathan-forage-1azAjl8FTnU-unsplash\1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.conte_parent{
+  height: 470px;
+}
+img{
+    display: flex;
+}
+
+.conte{
+    background-color: white;
+    border-radius: 20px;
+}
+
+.card img{
+    border-radius: 20px;
+    width: 223px;
+height: 289.83px;
+}
+.conte .cuchillo{
+     background-color: #111;
+}
+
+.informacion{
+    background-color: white;
+    font-family: sans-serif;
+    font-size: 10px;
+    margin: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.informacion h1{
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.informacion p{
+    display: flex;
+    font-family: sans-serif;
+    font-size: 10px;
+    text-align: center;
+
+
+}
+.precio {
+    padding-bottom: 10px;
+}
+.box-precio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.precio1{
+    color: red;
+    font-size: 20px;
+}
+.precio .precio2{
+    font-size: 30px;
+}
+.buttom{
+align-items: center;
+padding: 9px 60px;
+background: #00753D;
+border-radius: 20px;
+}
+.buttom a{
+    text-decoration: none;
+    color: white;
+}
