@@ -218,3 +218,7 @@ img {
 .buttom a {
   text-decoration: none;
   color: white; }
+
+@media screen and (max-width: 1200px) {
+  .body {
+    display: block; } }
