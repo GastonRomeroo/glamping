@@ -10,6 +10,7 @@ body {
 
 /*NAV*/
 .navigation {
+  transform: scale(0.7);
   position: fixed;
   inset: 20px;
   background: #588100;
@@ -145,7 +146,7 @@ body.index-101 {
 
 /* CARD */
 body.tienda-202 {
-  background-image: url(../../IMG/IMG_INDEX/index.jpg);
+  background-image: url(../../IMG/IMG_TIENDA/tiendajpg.jpg);
   background-repeat: no-repeat;
   background-size: cover; }
 
