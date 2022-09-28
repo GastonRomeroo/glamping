@@ -140,13 +140,13 @@ body {
   white-space: nowrap; }
 
 body.index-101 {
-  background-image: url(../../IMG/IMG_INDEX/index.jpg);
+  background-image: url(../IMG/IMG_INDEX/index.jpg);
   background-repeat: no-repeat;
   background-size: cover; }
 
 /* CARD */
 body.tienda-202 {
-  background-image: url(../../IMG/IMG_TIENDA/tiendajpg.jpg);
+  background-image: url(../IMG/IMG_TIENDA/tiendajpg.jpg);
   background-repeat: no-repeat;
   background-size: cover; }
 
