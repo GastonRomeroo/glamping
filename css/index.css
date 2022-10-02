@@ -12,7 +12,7 @@ body {
 .navigation {
   position: fixed;
   inset: 20px;
-  background: chocolate;
+  background: #b501ff75;
   width: 61px;
   border-radius: 50px;
   overflow: hidden;
@@ -43,7 +43,7 @@ body {
   width: 26px;
   height: 3px;
   border-radius: 3px;
-  background: #588100;
+  background: #b501ff75;
   transform: translateY(-5px);
   transition: 1s; }
 
@@ -53,7 +53,7 @@ body {
   width: 26px;
   height: 3px;
   border-radius: 3px;
-  background: #588100;
+  background: #b501ff75;
   transform: translateY(5px);
   transition: 1s; }
 
