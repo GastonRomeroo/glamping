@@ -139,13 +139,13 @@ body {
   white-space: nowrap; }
 
 body.index-101 {
-  background-image: url(../IMG/IMG_INDEX/index.jpg);
+  background-image: url(../../IMG/IMG_INDEX/index.jpg);
   background-repeat: no-repeat;
   background-size: cover; }
 
 /* CARD */
 body.tienda-202 {
-  background-image: url(../IMG/IMG_TIENDA/tiendajpg.jpg);
+  background-image: url(../../IMG/IMG_TIENDA/jonathan-forage-1azAjl8FTnU-unsplash\1.jpg);
   background-repeat: no-repeat;
   background-size: cover; }
 
@@ -160,12 +160,17 @@ body {
 img {
   display: flex; }
 
-.card {
+.conte {
   background-color: white;
   border-radius: 20px; }
 
 .card img {
-  border-radius: 20px; }
+  border-radius: 20px;
+  width: 223px;
+  height: 289.83px; }
+
+.conte .cuchillo {
+  background-color: #111; }
 
 .informacion {
   background-color: white;
@@ -212,7 +217,3 @@ img {
 .buttom a {
   text-decoration: none;
   color: white; }
-
-@media screen and (max-width: 1200px) {
-  .body {
-    display: block; } }
