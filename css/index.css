@@ -158,20 +158,18 @@ body {
   height: 470px; }
 
 img {
-  display: flex; }
+  display: flex;
+  max-width: 190px; }
 
 .card {
   background-color: white;
   border-radius: 20px; }
 
 .card img {
-  border-radius: 20px; }
+  border-radius: 20px;
+  display: inline-block; }
 
 .informacion {
-  background-color: white;
-  font-family: sans-serif;
-  font-size: 10px;
-  margin: 2px;
   display: flex;
   flex-direction: column;
   align-items: center; }
@@ -183,10 +181,10 @@ img {
   margin-bottom: 10px; }
 
 .informacion p {
-  display: flex;
   font-family: sans-serif;
-  font-size: 10px;
-  text-align: center; }
+  font-size: 13px;
+  text-align: center;
+  width: 189px; }
 
 .precio {
   padding-bottom: 10px; }
@@ -198,10 +196,10 @@ img {
 
 .precio1 {
   color: red;
-  font-size: 20px; }
+  font-size: 12px; }
 
 .precio .precio2 {
-  font-size: 30px; }
+  font-size: 20px; }
 
 .buttom {
   align-items: center;
