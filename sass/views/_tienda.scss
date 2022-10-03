@@ -1,8 +1,10 @@
 /* CARD */
 body.tienda-202{
     background-image: url(../IMG/IMG_TIENDA/tiendajpg.jpg);
-    background-repeat: no-repeat;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 }
 body{
     display: flex;
