@@ -6,14 +6,15 @@ let listaCategoria = []
 
 
 class Productos{
-constructor(id,nombre,detalle,precio,stock,iva,cat){
+constructor(id,nombre,detalle,precio,stock,iva,cat,img){
 this.id = parseInt(id);
 this.nombre = nombre.toUpperCase();
 this.detalle = detalle;
 this.precio = parseFloat(precio);
 this.stock = parseInt(stock);
 this.iva = parseFloat(iva);
-this.cat = cat.toUpperCase()
+this.cat = cat.toUpperCase();
+this.img = img;
 }
 }
 const listaProducto =[] //TRABAJANDO EN EL LISTADO DE PRODUCTOS EN UN ARRAY
@@ -58,7 +59,9 @@ card.innerHTML= `<div class="conte">
     <div class="precio">
         <div class="box-precio">
             <span class="precio"><b>$${prod.precio}</b></span>
-            <button class="miBoton">Añadir al carrito</button>  
+            <form name="miform" id="miform" method="get">
+            <input type="number" name="minumber" id="minumber" placeholder="Cantidad" min="0" max="${prod.stock}" step="${prod.stock}">
+            <input type="submit" id="miBoton"  class="miBoton"  value="Añadir al carrito"></form
         </div>
     </div>
 </div>
@@ -66,3 +69,6 @@ card.innerHTML= `<div class="conte">
 catalogo.append(card);
 }
 
+// accion de boton añadir a carrito
+let miBoton = document.getElementById("miBoton");
+miBoton.addEventListener("click",()=>console.log("Hiciste click"));

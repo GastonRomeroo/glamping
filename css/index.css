@@ -163,6 +163,14 @@ body.tienda-202 {
   padding-top: 10%;
   padding-bottom: 10%; }
 
+#miform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 5px; }
+
 .conte {
   display: flex;
   flex-direction: column; }
