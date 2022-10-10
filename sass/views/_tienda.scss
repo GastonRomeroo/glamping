@@ -11,18 +11,29 @@ body{
     justify-content: center;
     align-items: center;
 }
+#catalogo{
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-gap: 30px;
+}
 .conte_parent{
   height: 470px;
 }
 img{
-    display: flex;
     max-width: 190px;
 }
-
+.conte{
+    display: flex;
+    flex-direction: column;
+}
 .card{
-    
     background-color: white;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .card img{
@@ -40,13 +51,12 @@ img{
     font-family: sans-serif;
     font-size: 20px;
     text-align: center;
-    margin-bottom: 10px;
+    max-width: 100px;
+    display: inline-table;
 }
 .informacion p{
     font-family: sans-serif;
-    font-size: 13px;
     text-align: center;
-    width: 189px;
 
 }
 .precio {
@@ -57,23 +67,28 @@ img{
     flex-direction: column;
     align-items: center;
 }
-.precio1{
-    color: red;
-    font-size: 12px;
-}
-.precio .precio2{
+
+.precio{
     font-size: 20px;
 }
 
-.buttom{
-align-items: center;
-padding: 9px 60px;
-background: #00753D;
-border-radius: 20px;
-}
-.buttom a{
-    text-decoration: none;
+.miBoton { 
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    padding: 9px 30px;
+    border-radius: 20px; 
+    color: black; 
+    background: linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%);
+  } 
+.miBoton:hover { 
+    background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+    color: black;
+    transition: 2s; 
+  } 
+.miBoton:active { 
+    background-color: #FF9A8B;
+    background-image: linear-gradient(149deg, #FF9A8B 0%, #FF6A88 55%, #FF99AC 100%);
     color: white;
-}
-
+    transition: 0.1s;
+  } 
 
