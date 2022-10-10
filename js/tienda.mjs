@@ -60,8 +60,8 @@ card.innerHTML= `<div class="conte">
         <div class="box-precio">
             <span class="precio"><b>$${prod.precio}</b></span>
             <form name="miform" id="miform" method="get">
-            <input type="number" name="minumber" id="minumber" placeholder="Cantidad" min="0" max="${prod.stock}" step="${prod.stock}">
-            <input type="submit" id="miBoton"  class="miBoton"  value="Añadir al carrito"></form
+            <input type="number" name="minumber" id="minumber" placeholder="Cantidad" min=0 max="${prod.stock}" step="${prod.stock} + 1">
+            <input type="button" id="miBoton"  class="miBoton"  value="Añadir al carrito"></form
         </div>
     </div>
 </div>
