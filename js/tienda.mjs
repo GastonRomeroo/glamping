@@ -38,18 +38,16 @@ console.log(listadoNombresProductos); //Si los productos no tienen stock no apar
 listadoNombresID = listaProductoStock.map((prod) => prod.id);
 console.log(listadoNombresID); //Crea un array para los id unicamente
 
-listaCategoria = listaProductoStock.filter((prod)=> prod.cat == listaCategoria)
-console.log(listaCategoria)
+listaCategoria = listaProductoStock.filter((prod)=> prod.cat == listaCategoria);
+console.log(listaCategoria);
 
 
 
 
 for(const prod of listaProductoStock){
 let catalogo = document.getElementById(`catalogo`)
-
 let card = document.createElement(`div`);
 // card.className = `` ME SIRVE PARA DARLE UNA CLASE
-
 card.innerHTML= `<div class="conte">
 <div class="card">
     <img src="../IMG/IMG_TIENDA/articulos/ali-kazal-QKCo0sBAm58-unsplash 1.jpg" alt="imagen de un cuchillo acero damasco">
@@ -65,9 +63,6 @@ card.innerHTML= `<div class="conte">
     </div>
 </div>
 </div>`
-
 catalogo.append(card);
 }
 
-
-// card.innerHTML= `<h1>${prod.id}</h1><h2>${prod.nombre}</h2> <h3><p>$${prod.precio}</p></h3> `
