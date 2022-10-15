@@ -12,7 +12,7 @@ body {
 .navigation {
   position: fixed;
   inset: 20px;
-  background: #b501ff75;
+  background: #585454;
   width: 61px;
   border-radius: 50px;
   overflow: hidden;
@@ -43,7 +43,7 @@ body {
   width: 26px;
   height: 3px;
   border-radius: 3px;
-  background: #b501ff75;
+  background: #585454;
   transform: translateY(-5px);
   transition: 1s; }
 
@@ -53,7 +53,7 @@ body {
   width: 26px;
   height: 3px;
   border-radius: 3px;
-  background: #b501ff75;
+  background: #585454;
   transform: translateY(5px);
   transition: 1s; }
 
@@ -137,39 +137,38 @@ body {
   text-align: start;
   white-space: nowrap; }
 
-body.index-101 {
+.index-101 {
   background-image: url(../IMG/IMG_INDEX/index.jpg);
-  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-attachment: fixed; }
+  background-attachment: fixed;
+  height: 1024px; }
+
+.carrito-101 {
+  background-image: url(../../IMG/IMG_CARRITO/carrito.jpg);
+  width: 1098px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 20px; }
 
 /* CARD */
-body.tienda-202 {
-  background-image: url(../IMG/IMG_TIENDA/tiendajpg.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed; }
+.tienda-202 {
+  background-image: url(../../IMG/IMG_TIENDA/tiendajpg.jpg);
+  width: 1098px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  margin-bottom: 20px; }
 
 #catalogo {
-  max-width: 70%;
+  max-width: 1098px;
   display: flex;
   margin: 0 auto;
-  align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   grid-gap: 30px;
-  padding-top: 10%;
   padding-bottom: 10%; }
-
-#miform {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  gap: 5px; }
 
 .conte {
   display: flex;
@@ -178,9 +177,11 @@ body.tienda-202 {
 .card {
   width: 190px;
   background-color: white;
-  border-radius: 20px;
+  border-radius: 20px 20px 0 0;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #746e6e; }
 
 .card img {
   border-radius: 20px;
@@ -203,9 +204,6 @@ body.tienda-202 {
   font-family: sans-serif;
   text-align: center; }
 
-.precio {
-  padding-bottom: 10px; }
-
 .box-precio {
   display: flex;
   flex-direction: column;
@@ -215,6 +213,8 @@ body.tienda-202 {
   font-size: 20px; }
 
 .miBoton {
+  margin: 0 auto;
+  margin-bottom: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   font-size: 15px;
   padding: 9px 30px;
