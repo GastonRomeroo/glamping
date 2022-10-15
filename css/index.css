@@ -145,7 +145,7 @@ body {
   height: 1024px; }
 
 .carrito-101 {
-  background-image: url(../../IMG/IMG_CARRITO/carrito.jpg);
+  background-image: url(../IMG/IMG_CARRITO/carrito.jpg);
   width: 1098px;
   height: 500px;
   margin: 0 auto;
@@ -154,7 +154,7 @@ body {
 
 /* CARD */
 .tienda-202 {
-  background-image: url(../../IMG/IMG_TIENDA/tiendajpg.jpg);
+  background-image: url(../IMG/IMG_TIENDA/tiendajpg.jpg);
   width: 1098px;
   height: 500px;
   margin: 0 auto;
