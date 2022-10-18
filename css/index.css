@@ -147,7 +147,7 @@ body {
 /* CARD */
 .tienda-202 {
   background-image: url(../IMG/IMG_TIENDA/tiendajpg.jpg);
-  width: 1098px;
+  max-width: 1098px;
   height: 500px;
   margin: 0 auto;
   display: flex;
