@@ -5,7 +5,8 @@ let listadoNombresID = [];
 let cart = [];
 let priceMoney = `ARS $`
 let catalogo = document.getElementById("catalogo");
-let cartList = document.getElementById("carritoPrincipal")
+// let cartList = document.getElementById("carritoPrincipal");
+// let carrito = [];
 
 
 listaProductoStock = listaProducto.filter((prod) => prod.stock > 0);
@@ -24,7 +25,8 @@ listaProducto.forEach((prod)=>{
     //IMG
     let imgCard = document.createElement(`img`);
     imgCard.src = prod.img;
-    imgCard.alt = prod.detalle
+    imgCard.alt = prod.detalle;
+    imgCard.classList.add(`imgCardProducts`);
     //NAME PRODUCT
     let nameProduct = document.createElement(`div`);
     nameProduct.classList.add(`tittle_1`);
@@ -96,8 +98,45 @@ function renderCart(){
 
     linea.append(buttonDelete);
     cartList.append(linea);
-    cartList.append(imgCard);
 
 })
-
 }
+/*
+
+
+const verCarrito = document.getElementById("title_carrito");
+const modalContainer = document.getElementById("modalConteiner");
+
+
+verCarrito.addEventListener("click",()=>{
+
+    const modalHeader = document.createElement(`div`);
+    modalHeader.className = `modalHeader`;
+    modalHeader.innerHTML = `
+    <h1 class="modalHeaderItem">Carrito</h1>`
+
+    modalContainer.append(modalHeader);
+
+    const modalButton = document.createElement("h1");
+    modalButton.innerText = `X`;
+    modalButton.className = `modal-header-button`;
+
+    modalHeader.append(modalButton);
+
+
+    carrito.forEach((produc) =>{
+        const carritoContent = document.createElement(`div`);
+        carritoContent.className = `modal-content`
+        carritoContent.innerHTML =`
+        <img src"${produc.img}">
+        <h3>${produc.nombre}</h3>
+        <p>$${produc.precio}</p>`;
+
+    modalContainer.append(carritoContent);
+
+    })
+
+    const total = carrito.reduce((acc, el ) => acc + el.precio, 0)
+
+});
+*/

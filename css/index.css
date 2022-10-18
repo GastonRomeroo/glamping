@@ -144,14 +144,6 @@ body {
   background-attachment: fixed;
   height: 1024px; }
 
-.carrito-101 {
-  background-image: url(../IMG/IMG_CARRITO/carrito.jpg);
-  width: 1098px;
-  height: 500px;
-  margin: 0 auto;
-  display: flex;
-  margin-bottom: 20px; }
-
 /* CARD */
 .tienda-202 {
   background-image: url(../IMG/IMG_TIENDA/tiendajpg.jpg);
@@ -177,7 +169,13 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  text-align: center; }
+  text-align: center;
+  box-shadow: 15px 15px 25px #88afce9e; }
+
+.imgCardProducts {
+  max-width: 190px;
+  max-height: 234.33px;
+  border-radius: 20px; }
 
 .tittle_1 {
   font-weight: bold;
