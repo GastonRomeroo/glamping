@@ -1,0 +1,12 @@
+.asaidCart{
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        font-size: 30px;
+}
+.totalValue{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}

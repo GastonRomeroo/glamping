@@ -10,7 +10,7 @@ class Productos{
     this.cat = cat.toUpperCase();
     this.img = img; }}
 const listaProducto =[]
-listaProducto.push(new Productos('1',`Carpa canadiese`,'Carpa canadiese 6 personas',95000.0,15,1.21,`carpas`,`../IMG/IMG_TIENDA/articulos/1 (9).jpg`));
+listaProducto.push(new Productos('1',`Carpa canadiese`,'Carpa canadiese 6 personas',95000.0,3,1.21,`carpas`,`../IMG/IMG_TIENDA/articulos/1 (9).jpg`));
 listaProducto.push(new Productos('2',`Linterna Spinit`,`Linterna Spinit HL800R Frontal/Mano`,6198.1,30,1.21,`camping`,`../IMG/IMG_TIENDA/articulos/1 (8).jpg`));
 listaProducto.push(new Productos('3',`Navaja Trento`,`Navaja Trento Hunter Light 1.20`,6500,50,1.21,`camping`,`../IMG/IMG_TIENDA/articulos/1 (2).jpg`));
 listaProducto.push(new Productos('4',`Mochila Bamboo`,`Mochila Bamboo Adventure 70 Lts`,45000,53,1.21,`mochilas`,`../IMG/IMG_TIENDA/articulos/1 (5).jpg`));
