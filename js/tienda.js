@@ -6,14 +6,33 @@ let cartList = document.getElementById("carritoPrincipal");
 let totalValue = document.getElementById(`totalValue`);
 let buttonEmpty = document.getElementById(`vaciarCarrito`);
 
+
+// CONSTRUCTOR DE LA LISTA DE MIS PRODUCTOS
+class Productos{
+    constructor(id,nombre,detalle,precio,stock,iva,cat,img){
+    this.id = parseInt(id);
+    this.nombre = nombre.toUpperCase();
+    this.detalle = detalle;
+    this.precio = parseFloat(precio);
+    this.stock = parseInt(stock);
+    this.iva = parseFloat(iva);
+    this.cat = cat.toUpperCase();
+    this.img = img; 
+}}
+
 loadCartFromStorage();
 renderCart()
 //FUNCIONES DE LOCAL STORAGE
 function saveCartToStorage(){
-    localStorage.setItem(`cart`, JSON.stringify(cart))}
+    localStorage.setItem(`cart`, JSON.stringify(cart))
+    return cart;};
+
+
 function loadCartFromStorage(){
     if(localStorage.getItem(`cart`) !== null){
-        cart = JSON.parse(localStorage.getItem(`cart`))}}
+        cart = JSON.parse(localStorage.getItem(`cart`))}
+    return cart};
+
 
 //GENERADOR DE CARTS SOBRE LA LISTA DE PRODUCTOS
 listaProducto.forEach((prod)=>{
@@ -74,24 +93,45 @@ function renderCart(){
             return produc.id === parseInt(itemId)
         })
         let quantity = cart.reduce((total, id) =>{
-            return id === itemId ? total += 1 : total
+            return id === itemId ? total += 1 : total;
         },0)
 
     // CREA ASIGNA CLASE E IMPRIME EL PRODUCTO AGREGADO A CARRITO
     let linea = document.createElement(`li`);
     linea.classList.add("carrito");
-    linea.textContent =`${quantity} x ${item[0].nombre} - $${item[0].precio}`;
+    linea.innerHTML =`${quantity} X ${item[0].nombre} - $${item[0].precio}`;
+    //CONTADOR DE ITEMS SELECCIONADOS
+    
+    
+    
+
+
     // CREA UN BOTON PARA ELIMINAR EL ITEM SELECCIONADO
     let buttonDelete = document.createElement(`button`);
     buttonDelete.classList.add(`buttonDelete`);
-    buttonDelete.textContent = `Eliminar item`;
+    buttonDelete.textContent = `Eliminar`;
     buttonDelete.dataset.item = itemId
     buttonDelete.addEventListener(`click`, deleteProduc);
 
+
+
+
+    buttonEmpty.classList.add(`emptyButton`);
+    buttonEmpty.textContent = `Vaciar Carrito`;
+    buttonEmpty.addEventListener(`click`,emptyButtonHandler);
+
+
+    totalValue.textContent = `Precio total `+ priceMoney + calculateTotalPrice()
+
+
+
+
     linea.append(buttonDelete);
+    linea.append(buttonEmpty);
+    linea.append(totalValue);
     cartList.append(linea);
     
-    totalValue.textContent = priceMoney + calculateTotalPrice()
+
 
 })
 }
@@ -100,14 +140,14 @@ function deleteProduc(e){
     let id = e.target.dataset.item;
     cart = cart.filter((cartId) => {
     return cartId != id });
+    totalValue.innerText = priceMoney + 0;
     renderCart();
 }
 
 
 //BOTON DE VACIAR CARRITO
-buttonEmpty.classList.add(`emptyButton`);
-buttonEmpty.textContent = `Vaciar Carrito`;
-buttonEmpty.addEventListener(`click`,emptyButtonHandler);
+
+
 function emptyButtonHandler(){
     cart = [];
     cartList.innerHTML = "";
@@ -122,4 +162,3 @@ function calculateTotalPrice(){
         return produc.id === parseInt(itemId)})
     return total + item[0].precio },0);
 }
-
