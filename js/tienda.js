@@ -100,21 +100,12 @@ function renderCart(){
     let linea = document.createElement(`li`);
     linea.classList.add("carrito");
     linea.innerHTML =`${quantity} X ${item[0].nombre} - $${item[0].precio}`;
-    //CONTADOR DE ITEMS SELECCIONADOS
-    
-    
-    
-
-
     // CREA UN BOTON PARA ELIMINAR EL ITEM SELECCIONADO
     let buttonDelete = document.createElement(`button`);
     buttonDelete.classList.add(`buttonDelete`);
     buttonDelete.textContent = `Eliminar`;
     buttonDelete.dataset.item = itemId
     buttonDelete.addEventListener(`click`, deleteProduc);
-
-
-
 
     buttonEmpty.classList.add(`emptyButton`);
     buttonEmpty.textContent = `Vaciar Carrito`;
@@ -130,9 +121,6 @@ function renderCart(){
     linea.append(buttonEmpty);
     linea.append(totalValue);
     cartList.append(linea);
-    
-
-
 })
 }
 
@@ -146,8 +134,6 @@ function deleteProduc(e){
 
 
 //BOTON DE VACIAR CARRITO
-
-
 function emptyButtonHandler(){
     cart = [];
     cartList.innerHTML = "";
