@@ -79,7 +79,11 @@ function addProdToCart(e){
     saveCartToStorage();
     cart.push(e.target.getAttribute(`mark`));
     renderCart();
-
+    //ALERT SWEETALERT
+    Toast.fire({
+        icon: 'success',
+        title: 'Se agrego al carrito correctamente'
+      })
 }
 
 function renderCart(){
@@ -139,6 +143,11 @@ function emptyButtonHandler(){
     cartList.innerHTML = "";
     totalValue.innerText = priceMoney + 0;
     renderCart()
+    //ALERT SWEETALERT
+    Toast.fire({
+        icon: 'info',
+        title: 'El carrito se vacio correctamente'
+      })
 }
 
 //CALCULADOR DE PRECIO TOTAL
@@ -148,3 +157,17 @@ function calculateTotalPrice(){
         return produc.id === parseInt(itemId)})
     return total + item[0].precio },0);
 }
+
+
+//FUNCION DE LIBRERIA SWEET ALERT
+const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener('mouseenter', Swal.stopTimer)
+      toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
