@@ -2,12 +2,12 @@
 .navigation {
     position: fixed;
     inset: 20px;
-    background: #585454;
+    background: #000000;
     width: 61px;
     border-radius: 50px;
     overflow: hidden;
-    box-shadow: 15px 15px 25px black;
-    transition: 0.5s
+    transition: 0.5s;
+    z-index: 2;
 }
 .navigation.navigation.active
 {
@@ -35,7 +35,7 @@
     width: 26px;
     height: 3px;
     border-radius: 3px;
-    background:#585454;
+    background:#000000;
     transform: translateY(-5px);
     transition: 1s;
 }
@@ -45,7 +45,7 @@
     width: 26px;
     height: 3px;
     border-radius: 3px;
-    background:#585454;
+    background:#000000;
     transform: translateY(5px);
     transition: 1s;
 }

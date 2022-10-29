@@ -2,21 +2,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    max-height: 1024px;
     
 }
 .index-101{
-    display: flex;
     position: fixed;
     z-index: -1;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    height: 1024px;
-    
 }
 .index-101-2{
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    display: flex;
+    z-index: 1;
+    padding: 130px;
 }
