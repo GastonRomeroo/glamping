@@ -1,7 +1,22 @@
+.index-100{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
 .index-101{
-    background-image: url(../IMG/IMG_INDEX/index.jpg);
+    display: flex;
+    position: fixed;
+    z-index: -1;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
     height: 1024px;
+    
+}
+.index-101-2{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    display: flex;
 }
