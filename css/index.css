@@ -120,8 +120,7 @@ html.pushbar_locked .pushbar_overlay {
   border-radius: 3px;
   background: #000000;
   transform: translateY(-5px);
-  transition: 1s;
-  box-shadow: 1px 5px #0014ff; }
+  transition: 1s; }
 
 .toggle::after {
   content: '';
@@ -131,8 +130,7 @@ html.pushbar_locked .pushbar_overlay {
   border-radius: 3px;
   background: #000000;
   transform: translateY(5px);
-  transition: 1s;
-  box-shadow: 1px 5px #0014ff; }
+  transition: 1s; }
 
 .navigation.active .toggle::before {
   transform: translateY(0px) rotate(-405deg); }

@@ -5,7 +5,7 @@ let catalogo = document.getElementById("catalogo");
 let cartList = document.getElementById("carritoPrincipal");
 let totalValue = document.getElementById(`totalValue`);
 let buttonEmpty = document.getElementById(`vaciarCarrito`);
-
+let closeSesion = document.getElementById(`closeSesion`);
 
 // CONSTRUCTOR DE LA LISTA DE MIS PRODUCTOS
 class Productos{
@@ -157,7 +157,20 @@ function calculateTotalPrice(){
         return produc.id === parseInt(itemId)})
     return total + item[0].precio },0);
 }
-
+// CERRAR O NO LA SESION
+closeSesion.addEventListener(`click`,logout);
+function logout(){
+    Swal.fire({
+        title: '¿Desea cerrar sesión?',
+        showCancelButton: true,
+        confirmButtonText: 'si',
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          Swal.fire('Gracias por visitarnos', '', 'success')
+        }
+      })
+};
 
 //FUNCION DE LIBRERIA SWEET ALERT
 const Toast = Swal.mixin({
