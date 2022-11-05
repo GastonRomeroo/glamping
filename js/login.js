@@ -1,26 +1,50 @@
 
-
+loadLoginFromStorage()
 let chargeLogin = document.getElementById(`getUser`);
-chargeLogin.addEventListener(`click`,loginUser);
+if(chargeLogin){
+  chargeLogin.addEventListener(`click`,loginUser);
+}
 
-localStorage.getItem(nameUser, content)
+//GUARDAR MI FUNCION DE LOGIN EN LOCAL STORAGE
+function saveLoginToStorage(){
+  localStorage.setItem(`login`, JSON.stringify(userLogin));
+  return userLogin;};
+
+  function loadLoginFromStorage(){
+    if(localStorage.getItem(`login`) !== null){
+        login = JSON.parse(localStorage.getItem(`login`));
+        document.querySelector(".singin").style.display = "none";
+    return login};
+  }
+
+
+
+// FUNCION PARA INICIAR SESION
+
+let userLogin = {
+ nameUser:  "CODER",
+ passworUser :1234,
+}
+
+
 
 function loginUser(){
-    let nameUser = document.getElementById(`nameUser`).value;
-    let passworUser = document.getElementById(`passwordUser`).value;
-    if(nameUser =="CODER" && passworUser =="1234"){
+  loadLoginFromStorage()
+  saveLoginToStorage();
+  nameUser = document.getElementById(`nameUser`).value;
+  passworUser = document.getElementById(`passwordUser`).value;
+  if(nameUser == userLogin.nameUser || passworUser == userLogin.passworUser){
+        
         Toast.fire({
         icon: 'success',
         title: 'Signed in successfully'});
-        // window.location="tienda.html";
-        document.querySelector(".singin").style.display = "none";
+        window.location="tienda.html";
     }
     else{
        Toast.fire({
         icon: 'error',
         title: 'Invalid username or password'})
        }
-
 }
 
 
@@ -35,7 +59,9 @@ function logout(){
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
-          Swal.fire('Gracias por visitarnos', '', 'success')
+          localStorage.removeItem(`login`);
+          document.querySelector(".singin").style.display = "flex";
+          Swal.fire('Gracias por visitarnos', '', 'success');
         }
       })
 };
