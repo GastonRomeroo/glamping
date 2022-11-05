@@ -1,6 +1,7 @@
-// ANIMACION DEL NAV.
 let navigation = document.querySelector('.navigation');
 let toggle = document.querySelector('.toggle');
 toggle.onclick = function(){
-    navigation.classList.toggle('active')
-}
+    navigation.classList.toggle('active');
+};
+
+
