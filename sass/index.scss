@@ -1,22 +1,15 @@
 // MISC
 @import './misc/variables';
 @import './misc/normalize';
-@import './misc/mixing';
-@import './misc/pushbar';
+
 
 //PARTIALS
 @import './partials/header';
-@import './partials/footer';
 
 //VIEWS
-
-@import './views/cerrasesion';
 @import './views/home';
 @import './views/Iniciarsesion';
-@import './views/password';
 @import './views/tienda';
-@import './views/carrito.scss';
 
 // MEDIAQUERIES
-
 @import './misc/mediaqueries';

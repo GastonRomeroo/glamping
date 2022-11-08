@@ -5,7 +5,13 @@ let catalogo = document.getElementById("catalogo");
 let cartList = document.getElementById("carritoPrincipal");
 let totalValue = document.getElementById(`totalValue`);
 let buttonEmpty = document.getElementById(`vaciarCarrito`);
-
+let totalReduce = 0;
+// Ventana modal
+let modal = document.getElementById("ventanaModal");
+// Botón que abre el modal
+let boton = document.getElementById("abrirModal");
+// Hace referencia al elemento <span> que tiene la X que cierra la ventana
+let span = document.getElementsByClassName("cerrar")[0];
 
 // CONSTRUCTOR DE LA LISTA DE MIS PRODUCTOS
 class Productos{
@@ -17,7 +23,7 @@ class Productos{
     this.stock = parseInt(stock);
     this.iva = parseFloat(iva);
     this.cat = cat.toUpperCase();
-    this.img = img; 
+    this.img = img;
 }}
 
 loadLoginFromStorage()
@@ -67,7 +73,7 @@ listaProducto.forEach((prod)=>{
     //BUTTON
     let botonCompra = document.createElement(`button`);
     botonCompra.classList.add(`miBoton`);
-    botonCompra.textContent = `Añadir al carrito`; 
+    botonCompra.textContent = `Añadir al carrito`;
     botonCompra.setAttribute(`mark`, prod.id)
     botonCompra.addEventListener("click", addProdToCart);
 
@@ -76,7 +82,7 @@ listaProducto.forEach((prod)=>{
     cardBody.append(detailProduct);
     cardBody.append(priceProduct);
     cardBody.append(botonCompra);
-    
+
     catalogo.append(cardBody);
 
 
@@ -85,6 +91,7 @@ listaProducto.forEach((prod)=>{
 
 function addProdToCart(e){
     saveCartToStorage();
+    totalPrice()
     cart.push(e.target.getAttribute(`mark`));
     renderCart();
     //ALERT SWEETALERT
@@ -97,7 +104,7 @@ function addProdToCart(e){
 function renderCart(){
 
     saveCartToStorage();
-    
+
     cartList.innerHTML = "";
     let cartsRepetidas = [...new Set(cart)]
     cartsRepetidas.forEach((itemId) => {
@@ -114,43 +121,47 @@ function renderCart(){
     linea.innerHTML =`${quantity} X ${item[0].nombre} - $${item[0].precio}`;
     // CREA UN BOTON PARA ELIMINAR EL ITEM SELECCIONADO
     let buttonDelete = document.createElement(`button`);
-    buttonDelete.classList.add(`buttonDelete`);
+    buttonDelete.classList.add(`miBoton`);
     buttonDelete.textContent = `Eliminar`;
     buttonDelete.dataset.item = itemId
-    buttonDelete.addEventListener(`click`, deleteProduc);
-
-    buttonEmpty.classList.add(`emptyButton`);
-    buttonEmpty.textContent = `Vaciar Carrito`;
-    buttonEmpty.addEventListener(`click`,emptyButtonHandler);
+    buttonDelete.addEventListener(`click`, deleteProduct);
 
 
-    totalValue.textContent = `Precio total `+ priceMoney + calculateTotalPrice()
-
-
-
-
+    buttonEmptyToProduct();
     linea.append(buttonDelete);
-    linea.append(buttonEmpty);
-    linea.append(totalValue);
+    // linea.append(buttonEmpty);
     cartList.append(linea);
 })
 }
 
-function deleteProduc(e){
+function deleteProduct(e){
     let id = e.target.dataset.item;
     cart = cart.filter((cartId) => {
     return cartId != id });
     totalValue.innerText = priceMoney + 0;
     renderCart();
+    totalPrice();
+    buttonEmptyToProduct();
 }
-
-
 //BOTON DE VACIAR CARRITO
+function buttonEmptyToProduct(){
+    if(totalReduce > 0){
+        buttonEmpty.addEventListener(`click`,emptyButtonHandler);
+        buttonEmpty.style.display = "flex";
+        buttonEmpty.classList.add(`miBoton`);
+        buttonEmpty.textContent = `Vaciar Carrito`;
+    }else if( totalReduce == 0){
+        buttonEmpty.style.display = "none";
+    }
+}
 function emptyButtonHandler(){
+    totalReduce = 0;
+    buttonEmptyToProduct();
     cart = [];
     cartList.innerHTML = "";
     totalValue.innerText = priceMoney + 0;
-    renderCart()
+    renderCart();
+    totalPrice();
     //ALERT SWEETALERT
     Toast.fire({
         icon: 'info',
@@ -160,26 +171,22 @@ function emptyButtonHandler(){
 
 //CALCULADOR DE PRECIO TOTAL
 function calculateTotalPrice(){
-    return cart.reduce((total, itemId) => {
+    renderCart();
+    totalReduce = cart.reduce((total, itemId) => {
         let item = listaProducto.filter((produc) =>{
         return produc.id === parseInt(itemId)})
-    return total + item[0].precio },0);
+        return total + item[0].precio },0);
+    return totalReduce;
 }
 
 
-
-
-
-// Ventana modal
-let modal = document.getElementById("ventanaModal");
-// Botón que abre el modal
-let boton = document.getElementById("abrirModal");
-// Hace referencia al elemento <span> que tiene la X que cierra la ventana
-let span = document.getElementsByClassName("cerrar")[0];
-
+function totalPrice(){
+    totalValue.textContent = `Precio total `+ priceMoney + calculateTotalPrice();
+}
 // Cuando el usuario hace clic en el botón, se abre la ventana
 boton.addEventListener("click",function() {
-    modal.style.display = "block";
+    modal.style.display = "flex";
+    modal.style.justifyContent = "center";
   });
   // Si el usuario hace clic en la x, la ventana se cierra
   span.addEventListener("click",function() {
@@ -188,6 +195,6 @@ boton.addEventListener("click",function() {
   // Si el usuario hace clic fuera de la ventana, se cierra.
   window.addEventListener("click",function(event) {
     if (event.target == modal) {
-      modal.style.display = "none";
+      modal.style.display = "none"; 
     }
   });

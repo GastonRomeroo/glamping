@@ -10,7 +10,7 @@ function saveLoginToStorage(){
   localStorage.setItem(`login`, JSON.stringify(userLogin));
   return userLogin;};
 
-  function loadLoginFromStorage(){
+function loadLoginFromStorage(){
     if(localStorage.getItem(`login`) !== null){
         login = JSON.parse(localStorage.getItem(`login`));
         document.querySelector(".singin").style.display = "none";
@@ -67,14 +67,17 @@ function logout(){
 };
 
 
-
+function loadCartFromStorage(){
+  if(localStorage.getItem(`cart`) !== null){
+      cart = JSON.parse(localStorage.getItem(`cart`))}
+  return cart};
 
 //FUNCION DE LIBRERIA SWEET ALERT
 const Toast = Swal.mixin({
     toast: true,
     position: 'top-end',
     showConfirmButton: false,
-    timer: 3000,
+    timer: 1000,
     timerProgressBar: true,
     didOpen: (toast) => {
       toast.addEventListener('mouseenter', Swal.stopTimer)

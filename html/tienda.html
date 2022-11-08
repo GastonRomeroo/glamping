@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a  id="abrirModal">
                     <span class="icon"><ion-icon name="cart-outline"></ion-icon></span>
                     <span id="title-cart" class="title">Carrito</span>  
                 </a>
@@ -59,24 +59,26 @@
     </header>
 <!-- PRODUCTOS -->
     <div id="catalogo"></div>
-<!-- CARRITO -->
-    <table class="asaidCart">
-        <ul id="carritoPrincipal" class="carritoPrincipal"></ul>
-        <hr>
-        <div id="totalValue" class="totalValue"></div>
-
-        <button id="vaciarCarrito"></button>
-    </table>
+>
 <!-- MODAL -->
-<button id="abrirModal">Abrir Modal</button>
   <!-- Ventana modal, por defecto no visiblel -->
   <div id="ventanaModal" class="modal">
     <div class="modal-content">
-        <span class="cerrar">&times;</span>
-        <h2>Ventana modal</h2>
-        <p>Esto es el texto de la ventana</p>
+        <span class="cerrar">X</span>
+        <h2>Carrito de Compras</h2>
+        <p>Aqui estan los productos seleccionados</p>
+        <!-- CARRITO -->
+        <ul id="carritoPrincipal" class="carritoPrincipal"></ul>
+        <hr style="margin-top: 30px;">
+        <button id="vaciarCarrito"></button>
+        <div id="totalValue" class="totalValue"></div>
     </div>
   </div>
+
+
+
+
+
 <!-- JavaScript -->
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
