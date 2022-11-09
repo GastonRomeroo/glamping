@@ -23,7 +23,8 @@ body {
   border-radius: 50px;
   overflow: hidden;
   transition: 0.5s;
-  z-index: 2; }
+  z-index: 2;
+  height: 50%; }
 
 .navigation.navigation.active {
   width: 180px;

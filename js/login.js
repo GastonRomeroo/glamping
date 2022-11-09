@@ -1,9 +1,12 @@
-
 loadLoginFromStorage()
+//VARIABLES
 let chargeLogin = document.getElementById(`getUser`);
 if(chargeLogin){
   chargeLogin.addEventListener(`click`,loginUser);
 }
+let closeSesion = document.getElementById(`closeSesion`);
+closeSesion.addEventListener(`click`,logout);
+let userLogin = { nameUser:  "CODER", passworUser :1234,};
 
 //GUARDAR MI FUNCION DE LOGIN EN LOCAL STORAGE
 function saveLoginToStorage(){
@@ -17,17 +20,13 @@ function loadLoginFromStorage(){
     return login};
   }
 
-
-
+//LOCAL STORAGE DE TIENDA
+function loadCartFromStorage(){
+  if(localStorage.getItem(`cart`) !== null){
+      cart = JSON.parse(localStorage.getItem(`cart`))}
+  return cart};
+  
 // FUNCION PARA INICIAR SESION
-
-let userLogin = {
- nameUser:  "CODER",
- passworUser :1234,
-}
-
-
-
 function loginUser(){
   loadLoginFromStorage()
   saveLoginToStorage();
@@ -45,11 +44,7 @@ function loginUser(){
         title: 'Invalid username or password'})
        }
 }
-
-
 // CERRAR O NO LA SESION
-let closeSesion = document.getElementById(`closeSesion`);
-closeSesion.addEventListener(`click`,logout);
 function logout(){
     Swal.fire({
         title: '¿Desea cerrar sesión?',
@@ -64,13 +59,6 @@ function logout(){
         }
       })
 };
-
-
-function loadCartFromStorage(){
-  if(localStorage.getItem(`cart`) !== null){
-      cart = JSON.parse(localStorage.getItem(`cart`))}
-  return cart};
-
 //FUNCION DE LIBRERIA SWEET ALERT
 const Toast = Swal.mixin({
     toast: true,
