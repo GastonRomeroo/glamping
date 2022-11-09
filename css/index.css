@@ -1,4 +1,3 @@
-@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 .asaidCart {
   display: flex;
@@ -296,11 +295,6 @@ body {
   gap: 10px;
   align-items: center; }
 
-.totalValue {
-  font-size: 30px;
-  flex-direction: column;
-  align-items: flex-end; }
-
 .carritoPrincipal {
   display: flex;
   align-items: center;
@@ -309,33 +303,31 @@ body {
   flex-direction: column;
   gap: 10px; }
 
-/* Fondo modal: negro con opacidad al 50% */
+.totalValue {
+  font-size: 30px;
+  flex-direction: column;
+  align-items: flex-end; }
+
+.theBotons {
+  display: flex; }
+
 .modal {
   display: none;
-  /* Por defecto, estará oculto */
   position: fixed;
-  /* Posición fija */
   z-index: 1;
-  /* Se situará por encima de otros elementos de la página*/
   padding-top: 200px;
-  /* El contenido estará situado a 200px de la parte superior */
   color: white;
   left: 0;
   top: 0;
   width: 100%;
-  /* Ancho completo */
   height: 100%;
-  /* Algura completa */
   overflow: auto;
-  /* Se activará el scroll si es necesario */
   background-color: black; }
 
 .contenido-modal {
   position: relative;
-  /* Relativo con respecto al contenedor -modal- */
   background-color: white;
   margin: auto;
-  /* Centrada */
   padding: 20px;
   width: 60%;
   -webkit-animation-name: animarsuperior;
@@ -343,7 +335,6 @@ body {
   animation-name: animarsuperior;
   animation-duration: 0.5s; }
 
-/* Add Animation */
 @keyframes animatetop {
   from {
     top: -300px;

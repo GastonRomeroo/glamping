@@ -7,7 +7,6 @@
     display: flex;
     margin-bottom: 20px;
 }
-
 #catalogo{
     max-width: 1098px;
     display: flex;
@@ -74,11 +73,7 @@ border-radius: 20px;
   gap: 10px;
   align-items: center;
 }
-.totalValue{
-font-size: 30px;
-flex-direction: column;
-align-items: flex-end;
-}
+
 .carritoPrincipal{
   display: flex;
   align-items: center;
@@ -87,25 +82,32 @@ align-items: flex-end;
   flex-direction: column;
   gap: 10px;
 }
+.totalValue{
+  font-size: 30px;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.theBotons{
+  display: flex;
+}
 
-/* Fondo modal: negro con opacidad al 50% */
 .modal {
-    display: none; /* Por defecto, estará oculto */
-    position: fixed; /* Posición fija */
-    z-index: 1; /* Se situará por encima de otros elementos de la página*/
-    padding-top: 200px; /* El contenido estará situado a 200px de la parte superior */
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 200px;
     color: white;
     left: 0;
     top: 0;
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Algura completa */
-    overflow: auto; /* Se activará el scroll si es necesario */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
     background-color: black
   }
 .contenido-modal {
-  position: relative; /* Relativo con respecto al contenedor -modal- */
+  position: relative;
   background-color: white;
-  margin: auto; /* Centrada */
+  margin: auto;
   padding: 20px;
   width: 60%;
   -webkit-animation-name: animarsuperior;
@@ -113,7 +115,6 @@ align-items: flex-end;
   animation-name: animarsuperior;
   animation-duration: 0.5s
   }
-  /* Add Animation */
 @keyframes animatetop {
   from {top:-300px; opacity:0} 
   to {top:0; opacity:1}
@@ -122,8 +123,6 @@ align-items: flex-end;
     from {top:-300px; opacity:0}
     to {top:0; opacity:1}
   }
-
-
 .close {
   color: black;
   float: right;
@@ -136,4 +135,3 @@ align-items: flex-end;
   text-decoration: none;
   cursor: pointer;
 }
-

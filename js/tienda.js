@@ -6,6 +6,7 @@ let cartList = document.getElementById("carritoPrincipal");
 let totalValue = document.getElementById(`totalValue`);
 let buttonEmpty = document.getElementById(`vaciarCarrito`);
 let totalReduce = 0;
+let toBuy = document.getElementById(`realizarCompra`);
 // Ventana modal
 let modal = document.getElementById("ventanaModal");
 // Botón que abre el modal
@@ -48,6 +49,7 @@ function loadLoginFromStorage(){
     return login};
   }
 
+
 //GENERADOR DE CARTS SOBRE LA LISTA DE PRODUCTOS
 listaProducto.forEach((prod)=>{
     //BODY CARD
@@ -84,8 +86,6 @@ listaProducto.forEach((prod)=>{
     cardBody.append(botonCompra);
 
     catalogo.append(cardBody);
-
-
 });
 
 
@@ -145,13 +145,19 @@ function deleteProduct(e){
 }
 //BOTON DE VACIAR CARRITO
 function buttonEmptyToProduct(){
+
     if(totalReduce > 0){
         buttonEmpty.addEventListener(`click`,emptyButtonHandler);
         buttonEmpty.style.display = "flex";
         buttonEmpty.classList.add(`miBoton`);
         buttonEmpty.textContent = `Vaciar Carrito`;
+        //AGREGANDO EL BOTON DE COMPRA
+        toBuy.style.display = "flex";
+        toBuy.classList.add(`miBoton`);
+        toBuy.textContent = `Comprar`;
     }else if( totalReduce == 0){
         buttonEmpty.style.display = "none";
+        toBuy.style.display = "none"
     }
 }
 function emptyButtonHandler(){
@@ -168,6 +174,8 @@ function emptyButtonHandler(){
         title: 'El carrito se vacio correctamente'
       })
 }
+
+
 
 //CALCULADOR DE PRECIO TOTAL
 function calculateTotalPrice(){
@@ -198,3 +206,7 @@ boton.addEventListener("click",function() {
       modal.style.display = "none"; 
     }
   });
+
+
+  
+  
