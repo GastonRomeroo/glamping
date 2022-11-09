@@ -13,7 +13,7 @@ function saveLoginToStorage(){
 function loadLoginFromStorage(){
     if(localStorage.getItem(`login`) !== null){
         login = JSON.parse(localStorage.getItem(`login`));
-        document.querySelector(".singin").style.display = "none";
+        
     return login};
   }
 
@@ -34,7 +34,6 @@ function loginUser(){
   nameUser = document.getElementById(`nameUser`).value;
   passworUser = document.getElementById(`passwordUser`).value;
   if(nameUser == userLogin.nameUser || passworUser == userLogin.passworUser){
-        
         Toast.fire({
         icon: 'success',
         title: 'Signed in successfully'});

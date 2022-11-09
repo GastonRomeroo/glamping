@@ -83,12 +83,14 @@ border-radius: 20px;
   gap: 10px;
 }
 .totalValue{
+  display:flex ;
   font-size: 30px;
   flex-direction: column;
   align-items: flex-end;
 }
 .theBotons{
   display: flex;
+  padding: 10px;
 }
 
 .modal {
@@ -115,6 +117,7 @@ border-radius: 20px;
   animation-name: animarsuperior;
   animation-duration: 0.5s
   }
+
 @keyframes animatetop {
   from {top:-300px; opacity:0} 
   to {top:0; opacity:1}
@@ -134,4 +137,8 @@ border-radius: 20px;
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+.cerrar{
+  display: inline-block;
+  font-size: 30px;
 }

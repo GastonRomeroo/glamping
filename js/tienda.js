@@ -15,6 +15,7 @@ let boton = document.getElementById("abrirModal");
 let span = document.getElementsByClassName("cerrar")[0];
 
 // CONSTRUCTOR DE LA LISTA DE MIS PRODUCTOS
+
 class Productos{
     constructor(id,nombre,detalle,precio,stock,iva,cat,img){
     this.id = parseInt(id);
@@ -45,9 +46,8 @@ function loadCartFromStorage(){
 function loadLoginFromStorage(){
     if(localStorage.getItem(`login`) !== null){
     login = JSON.parse(localStorage.getItem(`login`));
-    document.querySelector(".singin").style.display = "none";
     return login};
-  }
+}
 
 
 //GENERADOR DE CARTS SOBRE LA LISTA DE PRODUCTOS
