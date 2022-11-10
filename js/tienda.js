@@ -1,5 +1,8 @@
 // tienda
-let cart = [];
+
+
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let priceMoney = `ARS $`
 let catalogo = document.getElementById("catalogo");
 let cartList = document.getElementById("carritoPrincipal");
@@ -25,9 +28,6 @@ class Productos{
     this.img = img;
 }}
 
-loadLoginFromStorage()
-loadCartFromStorage();
-renderCart();
 //FUNCIONES DE LOCAL STORAGE
 function saveCartToStorage(){
     localStorage.setItem(`cart`, JSON.stringify(cart))
@@ -45,10 +45,15 @@ function loadLoginFromStorage(){
     login = JSON.parse(localStorage.getItem(`login`));
     return login};
 }
+loadLoginFromStorage()
+loadCartFromStorage();
+renderCart();
 
 
 //GENERADOR DE CARTS SOBRE LA LISTA DE PRODUCTOS
-
+fetch(`../json/data.json`)
+.then((res) => res.json())
+.then((info) =>  info);
 listaProducto.forEach((prod)=>{
     //BODY CARD
     let cardBody = document.createElement(`div`);
@@ -84,7 +89,6 @@ listaProducto.forEach((prod)=>{
     cardBody.append(botonCompra);
     catalogo.append(cardBody);
 });
-
  
 function addProdToCart(e){
     saveCartToStorage();

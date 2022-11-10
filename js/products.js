@@ -1,4 +1,4 @@
-const listaProducto =[{
+/*const listaProducto =[{
     "id" : 1,
     "nombre" : "Carpa canadiese",
     "detalle" :"Carpa canadiese 6 personas",
@@ -108,3 +108,4 @@ const listaProducto =[{
     "img" : "../IMG/IMG_TIENDA/articulos/1 (1).jpg"
     }
     ]
+    */
