@@ -17,3 +17,6 @@ function loadCartFromStorage(){
     if(localStorage.getItem(`cart`) !== null){
         cart = JSON.parse(localStorage.getItem(`cart`))}
     return cart};
+
+
+

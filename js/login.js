@@ -6,17 +6,19 @@ if(chargeLogin){
 }
 let closeSesion = document.getElementById(`closeSesion`);
 closeSesion.addEventListener(`click`,logout);
-let userLogin = { nameUser:  "CODER", passworUser :1234,};
+
+let userLogin = { nameUser:  "CODER", passworUser :1234};
+let validationUser = false ;
 
 //GUARDAR MI FUNCION DE LOGIN EN LOCAL STORAGE
 function saveLoginToStorage(){
   localStorage.setItem(`login`, JSON.stringify(userLogin));
+  localStorage.setItem(`validation`, JSON.stringify(validationUser));
   return userLogin;};
 
 function loadLoginFromStorage(){
     if(localStorage.getItem(`login`) !== null){
         login = JSON.parse(localStorage.getItem(`login`));
-        
     return login};
   }
 
@@ -28,20 +30,22 @@ function loadCartFromStorage(){
   
 // FUNCION PARA INICIAR SESION
 function loginUser(){
-  loadLoginFromStorage()
-  saveLoginToStorage();
+  loadLoginFromStorage();
   nameUser = document.getElementById(`nameUser`).value;
   passworUser = document.getElementById(`passwordUser`).value;
-  if(nameUser == userLogin.nameUser || passworUser == userLogin.passworUser){
-        Toast.fire({
-        icon: 'success',
-        title: 'Signed in successfully'});
-        window.location="tienda.html";
+  if(nameUser == userLogin.nameUser && passworUser == userLogin.passworUser){
+    validationUser = true;
+    saveLoginToStorage();
+    Toast.fire({
+    icon: 'success',
+    title: 'Signed in successfully'});
+    window.location="tienda.html";
     }
     else{
-       Toast.fire({
-        icon: 'error',
-        title: 'Invalid username or password'})
+
+      Toast.fire({
+      icon: 'error',
+      title: 'Invalid username or password'})
        }
 }
 // CERRAR O NO LA SESION
@@ -53,6 +57,8 @@ function logout(){
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
         if (result.isConfirmed) {
+          validationUser = false;
+          localStorage.setItem(`validation`, JSON.stringify(validationUser));
           localStorage.removeItem(`login`);
           document.querySelector(".singin").style.display = "flex";
           Swal.fire('Gracias por visitarnos', '', 'success');

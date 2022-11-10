@@ -1,11 +1,9 @@
 // tienda
-
-
-
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let priceMoney = `ARS $`
 let catalogo = document.getElementById("catalogo");
 let cartList = document.getElementById("carritoPrincipal");
+const listaProducto = [];
 let totalValue = document.getElementById(`totalValue`);
 let buttonEmpty = document.getElementById(`vaciarCarrito`);
 let totalReduce = 0;
@@ -13,20 +11,6 @@ let toBuy = document.getElementById(`realizarCompra`);
 let modal = document.getElementById("ventanaModal");
 let boton = document.getElementById("abrirModal");
 let span = document.getElementsByClassName("cerrar")[0];
-
-// CONSTRUCTOR DE LA LISTA DE MIS PRODUCTOS
-
-class Productos{
-    constructor(id,nombre,detalle,precio,stock,iva,cat,img){
-    this.id = parseInt(id);
-    this.nombre = nombre.toUpperCase();
-    this.detalle = detalle;
-    this.precio = parseFloat(precio);
-    this.stock = parseInt(stock);
-    this.iva = parseFloat(iva);
-    this.cat = cat.toUpperCase();
-    this.img = img;
-}}
 
 //FUNCIONES DE LOCAL STORAGE
 function saveCartToStorage(){
@@ -45,50 +29,56 @@ function loadLoginFromStorage(){
     login = JSON.parse(localStorage.getItem(`login`));
     return login};
 }
-loadLoginFromStorage()
+loadLoginFromStorage();
 loadCartFromStorage();
-renderCart();
+damnedFetch();
 
+async function damnedFetch() {
+    const response = await fetch(`../html/listaProductos.json`)
+    const data = await response.json()
+    data.forEach((valor) => listaProducto.push(valor));
+    damnedFetch2();
+};
 
-//GENERADOR DE CARTS SOBRE LA LISTA DE PRODUCTOS
-fetch(`../json/data.json`)
-.then((res) => res.json())
-.then((info) =>  info);
-listaProducto.forEach((prod)=>{
-    //BODY CARD
-    let cardBody = document.createElement(`div`);
-    cardBody.classList.add(`card`);
-    //IMG
-    let imgCard = document.createElement(`img`);
-    imgCard.src = prod.img;
-    imgCard.alt = prod.detalle;
-    imgCard.classList.add(`imgCardProducts`);
-    //NAME PRODUCT
-    let nameProduct = document.createElement(`div`);
-    nameProduct.classList.add(`tittle_1`);
-    nameProduct.textContent = prod.nombre;
-    //DETAIL PRODUCT
-    let detailProduct = document.createElement(`div`);
-    detailProduct.classList.add(`tittle_2`);
-    detailProduct.textContent = prod.detalle;
-    //PRICEPRODUCT
-    let priceProduct = document.createElement(`div`);
-    priceProduct.classList.add(`precio`);
-    priceProduct.textContent = priceMoney + prod.precio;
-    //BUTTON
-    let botonCompra = document.createElement(`button`);
-    botonCompra.classList.add(`miBoton`);
-    botonCompra.textContent = `Añadir al carrito`;
-    botonCompra.setAttribute(`mark`, prod.id)
-    botonCompra.addEventListener("click", addProdToCart);
+//GENERADOR DE CARDS SOBRE LA LISTA DE PRODUCTOS
+function damnedFetch2 () {
+    listaProducto.forEach((prod)=>{
+        //BODY CARD
+        let cardBody = document.createElement(`div`);
+        cardBody.classList.add(`card`);
+        //IMG
+        let imgCard = document.createElement(`img`);
+        imgCard.src = prod.img;
+        imgCard.alt = prod.detalle;
+        imgCard.classList.add(`imgCardProducts`);
+        //NAME PRODUCT
+        let nameProduct = document.createElement(`div`);
+        nameProduct.classList.add(`tittle_1`);
+        nameProduct.textContent = prod.nombre;
+        //DETAIL PRODUCT
+        let detailProduct = document.createElement(`div`);
+        detailProduct.classList.add(`tittle_2`);
+        detailProduct.textContent = prod.detalle;
+        //PRICEPRODUCT
+        let priceProduct = document.createElement(`div`);
+        priceProduct.classList.add(`precio`);
+        priceProduct.textContent = priceMoney + prod.precio;
+        //BUTTON
+        let botonCompra = document.createElement(`button`);
+        botonCompra.classList.add(`miBoton`);
+        botonCompra.textContent = `Añadir al carrito`;
+        botonCompra.setAttribute(`mark`, prod.id)
+        botonCompra.addEventListener("click", addProdToCart);
+    
+        cardBody.append(imgCard);
+        cardBody.append(nameProduct);
+        cardBody.append(detailProduct);
+        cardBody.append(priceProduct);
+        cardBody.append(botonCompra);
+        catalogo.append(cardBody);
+    });
+}
 
-    cardBody.append(imgCard);
-    cardBody.append(nameProduct);
-    cardBody.append(detailProduct);
-    cardBody.append(priceProduct);
-    cardBody.append(botonCompra);
-    catalogo.append(cardBody);
-});
  
 function addProdToCart(e){
     saveCartToStorage();
@@ -155,11 +145,43 @@ function buttonEmptyToProduct(){
         toBuy.style.display = "flex";
         toBuy.classList.add(`miBoton`);
         toBuy.textContent = `Comprar`;
+        toBuy.addEventListener(`click`,validationLoginUser);
     }else if( totalReduce == 0){
         buttonEmpty.style.display = "none";
         toBuy.style.display = "none"
     }
 }
+function validationLoginUser(){
+
+    confirmValidation = JSON.parse(localStorage.getItem(`validation`));
+    if (confirmValidation == true){
+        //ALERT SWEETALERT
+        Toast.fire({
+        icon: 'success',
+        title: 'Muchas gracias por su compra'
+        });
+        window.location="../index.html";
+    }else{
+        //ALERT SWEETALERT
+        Swal.fire({
+            title: 'Esta seguro?',
+            text: "Debe iniciar sesion primero para realizar su compra",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, iniciar sesion'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location="Iniciarsesion.html";
+            }
+          })
+    }
+}
+
+
+
+
 function emptyButtonHandler(){
     totalReduce = 0;
     buttonEmptyToProduct();
