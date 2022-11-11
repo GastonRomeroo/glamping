@@ -1,6 +1,6 @@
 // tienda
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
-let priceMoney = `ARS $`
+let priceMoney = `ARS $`;
 let catalogo = document.getElementById("catalogo");
 let cartList = document.getElementById("carritoPrincipal");
 const listaProducto = [];
@@ -12,11 +12,11 @@ let modal = document.getElementById("ventanaModal");
 let boton = document.getElementById("abrirModal");
 let span = document.getElementsByClassName("cerrar")[0];
 
+
 //FUNCIONES DE LOCAL STORAGE
 function saveCartToStorage(){
     localStorage.setItem(`cart`, JSON.stringify(cart))
     return cart;};
-
 
 function loadCartFromStorage(){
     if(localStorage.getItem(`cart`) !== null){
@@ -29,16 +29,27 @@ function loadLoginFromStorage(){
     login = JSON.parse(localStorage.getItem(`login`));
     return login};
 }
+
 loadLoginFromStorage();
 loadCartFromStorage();
 damnedFetch();
 
 async function damnedFetch() {
-    const response = await fetch(`../html/listaProductos.json`)
-    const data = await response.json()
-    data.forEach((valor) => listaProducto.push(valor));
+    const responseDolar = await fetch(`https://www.dolarsi.com/api/api.php?type=valoresprincipales`);
+    const dataDolar = await responseDolar.json();
+    const changer = await dataDolar[0].casa.venta
+    const pricePoint = `${changer[0]}${changer[1]}${changer[2]}.${changer[4]}${changer[5]}`;
+    const priceDolarToDay = parseFloat(pricePoint) || 0;
+    const response = await fetch(`../html/listaProductos.json`);
+    const data = await response.json();
+    data.forEach((valor) => {
+        valor.precio *= priceDolarToDay;
+        listaProducto.push(valor);
+        
+    });
     damnedFetch2();
 };
+
 
 //GENERADOR DE CARDS SOBRE LA LISTA DE PRODUCTOS
 function damnedFetch2 () {
@@ -62,7 +73,7 @@ function damnedFetch2 () {
         //PRICEPRODUCT
         let priceProduct = document.createElement(`div`);
         priceProduct.classList.add(`precio`);
-        priceProduct.textContent = priceMoney + prod.precio;
+        priceProduct.textContent = priceMoney + (prod.precio).toFixed(2);
         //BUTTON
         let botonCompra = document.createElement(`button`);
         botonCompra.classList.add(`miBoton`);
@@ -109,12 +120,12 @@ function renderCart(){
     // CREA ASIGNA CLASE E IMPRIME EL PRODUCTO AGREGADO A CARRITO
     let linea = document.createElement(`li`);
     linea.classList.add("carrito");
-    linea.innerHTML =`${quantity} X ${item[0].nombre} - $${item[0].precio}`;
+    linea.innerHTML =`${quantity} X ${item[0].nombre} - $${(item[0].precio).toFixed(2)}`;
     // CREA UN BOTON PARA ELIMINAR EL ITEM SELECCIONADO
     let buttonDelete = document.createElement(`button`);
     buttonDelete.classList.add(`miBoton`);
     buttonDelete.textContent = `Eliminar`;
-    buttonDelete.dataset.item = itemId
+    buttonDelete.dataset.item = itemId ;
     buttonDelete.addEventListener(`click`, deleteProduct);
 
 
@@ -146,9 +157,12 @@ function buttonEmptyToProduct(){
         toBuy.classList.add(`miBoton`);
         toBuy.textContent = `Comprar`;
         toBuy.addEventListener(`click`,validationLoginUser);
+        //CAMBIANDO EL COLOR DEL CARRITO
+        boton.style.color = "#62ff00";
     }else if( totalReduce == 0){
         buttonEmpty.style.display = "none";
-        toBuy.style.display = "none"
+        toBuy.style.display = "none";
+        boton.style.color = "white";
     }
 }
 function validationLoginUser(){
@@ -179,9 +193,6 @@ function validationLoginUser(){
     }
 }
 
-
-
-
 function emptyButtonHandler(){
     totalReduce = 0;
     buttonEmptyToProduct();
@@ -209,7 +220,7 @@ function calculateTotalPrice(){
     return totalReduce;
 }
 function totalPrice(){
-    totalValue.textContent = `Precio total `+ priceMoney + calculateTotalPrice();
+    totalValue.textContent = `Precio total `+ priceMoney + calculateTotalPrice().toFixed(2);
 }
 
 
