@@ -11,8 +11,6 @@ let toBuy = document.getElementById(`realizarCompra`);
 let modal = document.getElementById("ventanaModal");
 let boton = document.getElementById("abrirModal");
 let span = document.getElementsByClassName("cerrar")[0];
-
-
 //FUNCIONES DE LOCAL STORAGE
 function saveCartToStorage(){
     localStorage.setItem(`cart`, JSON.stringify(cart))
@@ -29,11 +27,9 @@ function loadLoginFromStorage(){
     login = JSON.parse(localStorage.getItem(`login`));
     return login};
 }
-
 loadLoginFromStorage();
 loadCartFromStorage();
 damnedFetch();
-
 async function damnedFetch() {
     const responseDolar = await fetch(`https://www.dolarsi.com/api/api.php?type=valoresprincipales`);
     const dataDolar = await responseDolar.json();
@@ -49,8 +45,6 @@ async function damnedFetch() {
     });
     damnedFetch2();
 };
-
-
 //GENERADOR DE CARDS SOBRE LA LISTA DE PRODUCTOS
 function damnedFetch2 () {
     listaProducto.forEach((prod)=>{
@@ -89,8 +83,6 @@ function damnedFetch2 () {
         catalogo.append(cardBody);
     });
 }
-
- 
 function addProdToCart(e){
     saveCartToStorage();
     totalPrice()
@@ -102,7 +94,6 @@ function addProdToCart(e){
         title: 'Se agrego al carrito correctamente'
       })
 }
-
 function renderCart(){
 
     saveCartToStorage();
@@ -127,7 +118,6 @@ function renderCart(){
     buttonDelete.textContent = `Eliminar`;
     buttonDelete.dataset.item = itemId ;
     buttonDelete.addEventListener(`click`, deleteProduct);
-
 
     buttonEmptyToProduct();
     linea.append(buttonDelete);
@@ -192,7 +182,6 @@ function validationLoginUser(){
           })
     }
 }
-
 function emptyButtonHandler(){
     totalReduce = 0;
     buttonEmptyToProduct();
@@ -208,8 +197,6 @@ function emptyButtonHandler(){
       })
 }
 
-
-
 //CALCULADOR DE PRECIO TOTAL
 function calculateTotalPrice(){
     renderCart();
@@ -222,9 +209,6 @@ function calculateTotalPrice(){
 function totalPrice(){
     totalValue.textContent = `Precio total `+ priceMoney + calculateTotalPrice().toFixed(2);
 }
-
-
-
 //FUNCION DEL MODAL
 boton.addEventListener("click",function() {
     modal.style.display = "flex";

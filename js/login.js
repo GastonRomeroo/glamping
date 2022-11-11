@@ -42,7 +42,6 @@ function loginUser(){
     window.location="tienda.html";
     }
     else{
-
       Toast.fire({
       icon: 'error',
       title: 'Invalid username or password'})
